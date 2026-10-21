@@ -1,15 +1,22 @@
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
-test('renders header component', () => {
+test('App renders header with title', () => {
   render(<App />)
-  // Ищем любой элемент с классом header
-  const headerElement = document.querySelector('.header')
-  expect(headerElement).toBeInTheDocument()
+  // Ищем текст, который точно есть в Header
+  const titleElement = screen.getByText(/научно-исследовательский портал/i)
+  expect(titleElement).toBeInTheDocument()
 })
 
-test('renders main sections', () => {
+test('App renders main content', () => {
   render(<App />)
-  const mainElement = document.querySelector('.main')
-  expect(mainElement).toBeInTheDocument()
+  // Проверяем, что есть секция с научным анализом
+  const scienceElement = screen.getByText(/Комплексный анализ/i)
+  expect(scienceElement).toBeInTheDocument()
+})
+
+test('App renders footer', () => {
+  render(<App />)
+  const footerElement = screen.getByText(/status: deployed/i)
+  expect(footerElement).toBeInTheDocument()
 })
