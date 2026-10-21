@@ -15,7 +15,6 @@ export function Header() {
   };
 
   return (
-<<<<<<< HEAD
     <header className="header">
       <pre className="banner" aria-label="Hello Pages">
 {String.raw`Kinder joy`}
@@ -24,7 +23,6 @@ export function Header() {
         <span className="prompt">$</span> deploy --target github-pages
         <span className="caret" aria-hidden="true" />
       </p>
-=======
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="header-top">
         <pre className="banner" aria-hidden="true">{`
@@ -49,7 +47,6 @@ export function Header() {
           </button>
         ))}
       </nav>
->>>>>>> refs/remotes/origin/main
     </header>
   );
 }
