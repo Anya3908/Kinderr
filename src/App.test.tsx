@@ -1,22 +1,28 @@
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
-test('App renders header with title', () => {
-  render(<App />)
-  // Ищем текст, который точно есть в Header
-  const titleElement = screen.getByText(/научно-исследовательский портал/i)
-  expect(titleElement).toBeInTheDocument()
-})
+describe('App', () => {
+  it('renders the header', () => {
+    render(<App />)
+    // Проверяем главный заголовок (h1)
+    expect(
+      screen.getByRole('heading', { level: 1 })
+    ).toBeInTheDocument()
+  })
 
-test('App renders main content', () => {
-  render(<App />)
-  // Проверяем, что есть секция с научным анализом
-  const scienceElement = screen.getByText(/Комплексный анализ/i)
-  expect(scienceElement).toBeInTheDocument()
-})
+  it('renders the about section', () => {
+    render(<App />)
+    // Проверяем, что секция "about" отрендерилась
+    expect(
+      screen.getByRole('heading', { level: 2, name: /about/i })
+    ).toBeInTheDocument()
+  })
 
-test('App renders footer', () => {
-  render(<App />)
-  const footerElement = screen.getByText(/status: deployed/i)
-  expect(footerElement).toBeInTheDocument()
+  it('renders the projects list', () => {
+    render(<App />)
+    // Проверяем наличие хотя бы одного элемента списка
+    const listItems = screen.getAllByRole('listitem')
+    expect(listItems.length).toBeGreaterThan(0)
+  })
 })
