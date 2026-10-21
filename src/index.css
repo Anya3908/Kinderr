@@ -1,14 +1,12 @@
 :root {
-  --bg: #0d1117;
-  --panel: #161b22;
-  --panel-2: #1c2430;
-  --border: #30363d;
-  --text: #e6edf3;
-  --muted: #8b949e;
-  --accent: #00d9a3;
-  --accent-soft: rgba(0, 217, 163, 0.12);
-  --comment: #6e7681;
-  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bg: #fff9f2; /* Нежный персиково-сливочный фон */
+  --text: #4a3728; /* Теплый коричневый */
+  --muted: #8c7768;
+  --accent: #ff7b54; /* Яркий, но мягкий оранжевый (как упаковка) */
+  --accent-light: #fff0e6;
+  --panel: #ffffff;
+  --border: #f0e6dc;
+  --shadow-hover: 0 12px 24px rgba(255, 123, 84, 0.15); /* Цветная тень */
 }
 
 * {
@@ -17,242 +15,181 @@
   padding: 0;
 }
 
-html, body, #root {
-  min-height: 100%;
-}
-
 body {
-  font-family: var(--mono);
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(0, 217, 163, 0.08), transparent 60%),
-    radial-gradient(900px 500px at 110% 10%, rgba(88, 166, 255, 0.06), transparent 60%),
-    var(--bg);
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  /* Легкий узор из точек на фоне */
+  background-image: radial-gradient(#f0e6dc 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
 .app {
-  max-width: 880px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 3rem 1.25rem 4rem;
+  padding: 3rem 1.5rem 5rem;
 }
 
-/* === Header === */
+/* === Шапка === */
 .header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #fff4e6 100%);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(255, 123, 84, 0.08);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
 
-.banner {
+.header-badge {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: clamp(0.42rem, 1.15vw, 0.85rem);
-  line-height: 1.15;
+  background-color: var(--accent-light);
   color: var(--accent);
-  text-shadow: 0 0 18px rgba(0, 217, 163, 0.45);
-  margin-bottom: 1.25rem;
-  white-space: pre;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.header h1 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .tagline {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
-.prompt {
-  color: var(--accent);
-  margin-right: 0.4rem;
-}
-
-.caret {
-  display: inline-block;
-  width: 0.6ch;
-  height: 1.05em;
-  margin-left: 0.25rem;
-  vertical-align: -0.15em;
-  background: var(--accent);
-  animation: blink 1.1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-/* === Cards === */
+/* === Карточки === */
 .main {
-  display: grid;
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 
 .card {
-  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.5rem 1.6rem;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.02) inset,
-    0 20px 40px -30px rgba(0, 0, 0, 0.9);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 15px rgba(74, 55, 40, 0.03);
+  
+  /* Плавный переход для всех эффектов при наведении */
+  transition: all 0.3s ease;
+}
+
+/* HOVER ЭФФЕКТ: Карточка приподнимается, появляется цветная тень */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(255, 123, 84, 0.3);
 }
 
 .card h2 {
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.6rem;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px dashed var(--border);
+  transition: color 0.3s ease;
+}
+
+/* HOVER ЭФФЕКТ: Заголовок внутри карточки меняет цвет */
+.card:hover h2 {
   color: var(--accent);
-  font-weight: 600;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .card p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.card ul, .card ol {
+  padding-left: 1.5rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.card li {
+  margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+/* HOVER ЭФФЕКТ: Элементы списка немного сдвигаются вправо */
+.card li:hover {
+  transform: translateX(5px);
   color: var(--text);
-  margin-bottom: 0.75rem;
 }
 
-.card p:last-child {
-  margin-bottom: 0;
+/* === Таблицы === */
+.sci-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.card strong {
-  color: #fff;
-  font-weight: 600;
+.sci-table th, .sci-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 
-.comment {
-  color: var(--comment);
-  margin-right: 0.35rem;
-}
-
-.hint {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-code {
-  background: var(--accent-soft);
+.sci-table th {
+  background-color: var(--accent-light);
   color: var(--accent);
-  border: 1px solid rgba(0, 217, 163, 0.25);
-  padding: 0.05rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.88em;
+  font-weight: 700;
 }
 
-/* === Projects list === */
-.listing {
-  list-style: none;
+.sci-table tr {
+  transition: background-color 0.2s ease;
 }
 
-.listing li {
-  padding: 0.55rem 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 0.95rem;
+/* HOVER ЭФФЕКТ: Подсветка строки в таблице */
+.sci-table tbody tr:hover {
+  background-color: #fffcf9;
 }
 
-.listing li:last-child {
-  border-bottom: none;
+.sci-table td.param {
+  font-weight: 700;
+  color: var(--text);
 }
 
-.arrow {
+.sci-table td.value {
   color: var(--accent);
-  margin-right: 0.15rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.name {
-  color: #fff;
-  font-weight: 600;
-}
-
-.sep {
-  color: var(--comment);
-}
-
-.desc {
-  color: var(--muted);
-}
-
-/* === Footer === */
+/* === Футер === */
 .footer {
-  margin-top: 2.5rem;
+  margin-top: 4rem;
   text-align: center;
   color: var(--muted);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  animation: pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.55; transform: scale(0.85); }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .caret, .dot { animation: none; }
-}
-/* Добавьте в конец src/index.css */
-.card {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 
-              0 25px 50px -30px rgba(0, 217, 163, 0.15);
-}
-/* Плавное появление карточек */
-.card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.card:nth-child(1) { animation-delay: 0.05s; }
-.card:nth-child(2) { animation-delay: 0.15s; }
-.card:nth-child(3) { animation-delay: 0.25s; }
-.card:nth-child(4) { animation-delay: 0.35s; }
-.card:nth-child(5) { animation-delay: 0.45s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Скроллбар в стиле сайта */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Выделение текста */
-::selection {
-  background: var(--accent);
-  color: var(--bg);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
