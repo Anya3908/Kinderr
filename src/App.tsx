@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route, Link } from 'react-router-dom'
 import { Header } from './components/Header'
 import { About } from './components/About'
+import { Editions } from './components/Editions' // Импортируем новые карточки
 
 function Home() {
   return (
@@ -51,10 +52,14 @@ function Home() {
             </tr>
           </tbody>
         </table>
+      </div>
 
-        <div style={{ marginTop: '2rem' }}>
-          <Link to="/about" className="btn-link">Перейти к литературе и деталям →</Link>
-        </div>
+      {/* Вставляем блок с выпусками */}
+      <Editions />
+
+      {/* Центрированная кнопка О проекте */}
+      <div className="btn-center-wrap">
+        <Link to="/about" className="btn-link btn-large">О проекте</Link>
       </div>
     </div>
   )
@@ -69,6 +74,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            {/* Сюда позже добавим маршрут для страницы конкретного выпуска */}
           </Routes>
         </main>
         <footer className="footer">
