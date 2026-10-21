@@ -5,19 +5,19 @@ const editions = [
     id: 'star-wars',
     title: 'Kinder Joy: Звёздные войны',
     desc: 'Специальная серия с игрушками по мотивам легендарной саги.',
-    image: '/images/star-wars.jpg',
+    image: `${import.meta.env.BASE_URL}images/star-wars.jpg`,
   },
   {
     id: 'unicorn',
     title: 'Kinder Сюрприз: Мир единорогов',
     desc: 'Волшебная коллекция с единорогами и другими сказочными существами.',
-    image: '/images/unicorn.jpg',
+    image: `${import.meta.env.BASE_URL}images/unicorn.jpg`,
   },
   {
     id: 'giraffe',
     title: 'Kinder Сюрприз: Natocooks',
     desc: 'Серия с милыми жирафами и персонажами из мира животных.',
-    image: '/images/giraffe.jpg',
+    image: `${import.meta.env.BASE_URL}images/giraffe.jpg`,
   }
 ]
 
