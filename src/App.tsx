@@ -1,4 +1,4 @@
-import { Projects } from './components/Projects'
+
 import { Header } from './components/Header'
 import { KinderScience } from './components/KinderScience'
 import { Composition } from './components/Composition'
