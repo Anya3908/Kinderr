@@ -1,0 +1,66 @@
+.composition {
+  overflow: hidden;
+}
+
+.composition h2 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sci-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-family: var(--mono);
+}
+
+.sci-table th {
+  background: var(--panel-2);
+  color: var(--accent);
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+.sci-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px dashed var(--border);
+  color: var(--text);
+}
+
+.sci-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sci-table tr:hover td {
+  background: var(--accent-soft);
+}
+
+.sci-table .param {
+  color: #fff;
+  font-weight: 600;
+}
+
+.sci-table .value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sci-table .note {
+  color: var(--muted);
+  font-style: italic;
+}
