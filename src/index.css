@@ -193,3 +193,32 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
 }
+/* === Кнопки === */
+.btn-link {
+  display: inline-block;
+  background-color: var(--accent);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 123, 84, 0.3);
+}
+
+.btn-link:hover {
+  background-color: #e56a45;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 123, 84, 0.4);
+}
+
+.btn-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.btn-back:hover {
+  color: var(--accent);
+}

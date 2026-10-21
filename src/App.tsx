@@ -1,28 +1,38 @@
-
+import { HashRouter, Routes, Route, Link } from 'react-router-dom'
 import { Header } from './components/Header'
-import { KinderScience } from './components/KinderScience'
-import { Composition } from './components/Composition'
-import { Sources } from './components/Sources'
-import { ScrollTop } from './components/ScrollTop'
 import { About } from './components/About'
-import { Projects } from './components/Projects'
+
+function Home() {
+  return (
+    <>
+      <div className="card">
+        <h2>Анализ продукта</h2>
+        <p>Здесь представлены основные результаты нашего исследования.</p>
+        {/* Сюда вы можете добавить остальные карточки с анализом */}
+      </div>
+      <div className="card">
+        <h2>Навигация</h2>
+        <Link to="/about" className="btn-link">Перейти к литературе и деталям →</Link>
+      </div>
+    </>
+  )
+}
 
 export default function App() {
   return (
-    <div className="app">
-      <Header />
-      <main className="main">
-        <div id="about"><About /></div>
-        <div id="projects"><Projects /></div>
-        <div id="science"><KinderScience /></div>
-        <Composition />
-        <Sources />
-      </main>
-      <footer className="footer">
-        <span className="dot" aria-hidden="true" />
-        <span>status: deployed · via GitHub Actions · © 2026</span>
-      </footer>
-      <ScrollTop />
-    </div>
+    <HashRouter>
+      <div className="app">
+        <Header />
+        <main className="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </main>
+        <footer className="footer">
+          <p>© 2026 Kinder Joy Analysis</p>
+        </footer>
+      </div>
+    </HashRouter>
   )
 }
