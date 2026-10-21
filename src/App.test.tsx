@@ -1,27 +1,22 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
-describe('App', () => {
-  it('renders the banner header', () => {
-    render(<App />)
-    expect(
-      screen.getByLabelText(/hello pages/i)
-    ).toBeInTheDocument()
-  })
+test('App renders header with title', () => {
+  render(<App />)
+  // Ищем текст, который точно есть в Header
+  const titleElement = screen.getByText(/научно-исследовательский портал/i)
+  expect(titleElement).toBeInTheDocument()
+})
 
-  it('renders the about section', () => {
-    render(<App />)
-    expect(
-      screen.getByRole('heading', { level: 2, name: /about/i })
-    ).toBeInTheDocument()
-    expect(screen.getAllByText(/GitHub Pages/i).length).toBeGreaterThan(0)
-  })
+test('App renders main content', () => {
+  render(<App />)
+  // Проверяем, что есть секция с научным анализом
+  const scienceElement = screen.getByText(/Комплексный анализ/i)
+  expect(scienceElement).toBeInTheDocument()
+})
 
-  it('renders the projects list', () => {
-    render(<App />)
-    expect(screen.getByText(/go-cli/i)).toBeInTheDocument()
-    expect(screen.getByText(/go-gui/i)).toBeInTheDocument()
-    expect(screen.getByText(/hello-pages/i)).toBeInTheDocument()
-  })
+test('App renders footer', () => {
+  render(<App />)
+  const footerElement = screen.getByText(/status: deployed/i)
+  expect(footerElement).toBeInTheDocument()
 })
