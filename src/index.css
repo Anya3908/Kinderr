@@ -199,3 +199,16 @@ code {
 @media (prefers-reduced-motion: reduce) {
   .caret, .dot { animation: none; }
 }
+/* Добавьте в конец src/index.css */
+.card {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 
+              0 25px 50px -30px rgba(0, 217, 163, 0.15);
+}
